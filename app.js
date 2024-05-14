@@ -1,10 +1,19 @@
 const express = require('express');
+
 const app = express();
+
+//configuração do ejs
+var path = require('path');
+app.use(express.static(path.resolve(__dirname,'public')))
+app.set('view engine', 'ejs');
+app.set('views',path.join(__dirname+'/views'));
+
 const routes = require('./routes');
 
 
 // CONFIGURAÇÃO PARA PERMITIR ENVIO DE PARAMETROS
 // NO CORPO DA REQUISIÇÃO
+// app.use(express.json());
 app.use(
     express.urlencoded(
         {
