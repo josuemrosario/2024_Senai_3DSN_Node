@@ -7,5 +7,16 @@
 </head>
 <body>
     <h1>Cadastro</h1>
+
+    <h2>Uma unica variavel</h2>
+    <%= pessoa.nome %>
+
+    <h2>Iterando um array</h2>
+    <br>
+    <% dados.forEach((linha)=>{ %>
+         <!-- posso escrever html aqui -->
+        <b> <%= linha.campo1 %>  </b> <br>
+    <%})%>
+
 </body>
 </html>

@@ -1,3 +1,5 @@
+const exemploModel = require('../models/exemploModel');
+
 exports.formView = (req,res) => {
     
     // res.send(`
@@ -19,7 +21,19 @@ exports.formPost = (req,res) => {
 }
 
 exports.cadastro = (req,res) =>{
-    //res.send('homeController, homeview()');
-    console.log('homeController cadastro()')
-    res.render('cadastro',)
+    //res.send('formController, homeview()');
+    console.log('formController cadastro()')
+    
+    // dados = ['dado1','dado2','dado3','dado4']
+    exemploModel.setDados('testedb')
+    dados = exemploModel.getDados()
+    
+    pessoa = {
+        nome: 'josue micaroni',
+        idade: '45'
+    }
+
+    res.render('cadastro',dados)
 }
+
+
