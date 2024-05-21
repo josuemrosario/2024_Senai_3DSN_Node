@@ -3,14 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
     <title>Formulario</title>
 </head>
 <body>
-    <form action="/form" method="POST">
-        <label>Teste: </label>
-        <input name='teste' type="text">
-        <input type="submit" value="enviar">
-     </form>
+
+ 
+    <div class="mb-3 mt-3 ms-3 m3-3">
+
+        <div class="mb-3">
+            <h1>CADASTRO DE PESSOA</h1>
+        </div>
+
+        <!-- inicio do formulario -->
+         <form action="/form" method="POST">
+            
+            <!-- inicio do campo id -->
+            <div class="input-group mb-3">
+                <label class="form-label">ID: <span id="cpid" >XXX</span></label>
+            </div>
+            <!-- fim do campo id -->
+            
+            <!-- incio campo Nome -->
+            <div class="mb-3 w-50">
+                <label for="cpnome" class="form-label">Nome</label>
+                <input id="cpnome" type="text" class="form-control"  aria-describedby="emailHelp" size="5" >
+            </div>
+            <!-- fim campo Nome -->
+    
+            <!-- inicio do campo Telefone -->
+            <div class="mb-3 w-25">
+                <label for="cptelefone" class="form-label">Telefone</label>
+                <input id="cptelefone" type="text" class="form-control"  aria-describedby="emailHelp">
+            </div>
+            <!-- fim do campo Telefone -->
+    
+            <!-- inicio do campo Endereco -->
+            <div class="mb-3 w-50">
+                <label for="cpEndereco" class="form-label">Endereco</label>
+                <input id="cpEndereco" type="text" class="form-control"  aria-describedby="emailHelp">
+            </div>
+            <!-- fim do campo Endereco -->
+    
+            <!-- inicio do campo Email -->
+            <div class="mb-3 w-50">
+                <label for="cpEmail" class="form-label">Email</label>
+                <input id="cpEmail" type="text" class="form-control"  aria-describedby="emailHelp">
+            </div>
+            <!-- fim do campo Email -->
+    
+            <!-- inicio do campo Email -->
+            <div class="mb-3 w-25">
+                <label for="cpCPF" class="form-label">CPF</label>
+                <input id="cpCPF" type="text" class="form-control"  aria-describedby="emailHelp">
+            </div>
+            <!-- fim do campo Email -->        
+    
+            <!-- inicio do campo RG -->
+            <div class="mb-3 w-25">
+                <label for="cpRG" class="form-label">RG</label>
+                <input id="cpRG" type="text" class="form-control"  aria-describedby="emailHelp">
+            </div>
+            <!-- fim do campo RG --> 
+    
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          <!-- fim do formulario -->
+    </div>
      <%- include('./partials/copy.ejs') %>
 </body>
 </html>
