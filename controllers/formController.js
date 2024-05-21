@@ -17,6 +17,7 @@ exports.formView = (req,res) => {
 exports.formPost = (req,res) => {
     console.log('funcao formPost')
     console.log(req.body)
+    console.log(req.body.teste)
     res.send('Rota /form usando POST acessada')
 }
 
@@ -25,7 +26,7 @@ exports.cadastro = (req,res) =>{
     console.log('formController cadastro()')
     
     // dados = ['dado1','dado2','dado3','dado4']
-    exemploModel.setDados('testedb')
+    // exemploModel.setDados('testedb')
     dados = exemploModel.getDados()
     
     pessoa = {

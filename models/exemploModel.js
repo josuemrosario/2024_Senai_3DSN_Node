@@ -10,7 +10,7 @@ exports.getDados = () => {
     db.getConnection() // abre a conexão com o banco retorna a conexão(uma promisse)
     .then(conn => {  
        // usa a conexao para fazer uma query ( retorna como promisse)
-      conn.query("select * from teste") 
+      conn.query("select * from pessoa") 
         .then((rows) => {
           console.log(rows); 
           dados = rows

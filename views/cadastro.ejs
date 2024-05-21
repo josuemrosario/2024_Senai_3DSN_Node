@@ -3,20 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
     <title>Cadastro</title>
 </head>
 <body>
-    <h1>Cadastro</h1>
+    <h1>Cadastro Pessoa</h1>
 
-    <h2>Uma unica variavel</h2>
-    <%= pessoa.nome %>
+    <button type="button" class="btn btn-primary">Cadastrar</button>
 
-    <h2>Iterando um array</h2>
-    <br>
-    <% dados.forEach((linha)=>{ %>
-         <!-- posso escrever html aqui -->
-        <b> <%= linha.campo1 %>  </b> <br>
-    <%})%>
+    <table class="table">
+        <thead>
+          <tr class="table-dark" >
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Endereco</th>
+            <th scope="col">Email</th>
+            <th scope="col">CPF</th>
+            <th scope="col">RG</th>
+            <th scope="col">Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% dados.forEach((linha)=>{ %>
+                <!-- posso escrever html aqui -->
+                <tr>
+                    <th scope="row "><%= linha.id %></th>
+                    <td><%= linha.nome %></td>
+                    <td><%= linha.telefone %></td>
+                    <td><%= linha.endereco %></td>
+                    <td><%= linha.email %></td>
+                    <td><%= linha.cpf %></td>
+                    <td><%= linha.rg %></td>
+                    <td> 
+                        <button type="button" class="btn btn-warning">Modificar</button>
+                        <button type="button" class="btn btn-danger">Deletar</button>
+                    </td>
+                </tr>
+           <%})%>            
+ 
+
+      </table>
 
 </body>
 </html>
