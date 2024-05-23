@@ -18,6 +18,7 @@ exports.formPost = (req,res) => {
     console.log('funcao formPost')
     console.log(req.body)
     console.log(req.body.teste)
+      
     res.send('Rota /form usando POST acessada')
 }
 

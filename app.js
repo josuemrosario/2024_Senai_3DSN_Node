@@ -7,6 +7,7 @@ var path = require('path');
 app.use(express.static(path.resolve(__dirname,'public')))
 app.set('view engine', 'ejs');
 app.set('views',path.join(__dirname+'/views'));
+app.set('validators',path.join(__dirname+'/validators'));
 
 //configuração do bootstrap
 app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')))

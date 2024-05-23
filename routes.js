@@ -1,9 +1,13 @@
+
 const express = require('express');
 const route = express.Router();
 
 
 const formController = require('./controllers/formController');
 const homeController = require('./controllers/homeController');
+const formValidator = require('./validators/formValidator');
+
+
 
 // ROTAS DA APLICAÇÃO (INICIO)
 
@@ -24,7 +28,10 @@ route.get('/form',formController.formView)
 //     res.send('rota /form usando POST acessada com sucesso');
 // })
 
-route.post('/form',formController.formPost)
+route.post('/form',
+            formValidator.validacoes,
+            formValidator.retornoValidacoes,
+            formController.formPost)
 
 route.get('/cadastro',formController.cadastro)
 
