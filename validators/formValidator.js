@@ -1,3 +1,5 @@
+const formController = require('../controllers/formController');
+
 const { body, validationResult } = require('express-validator');
 
 exports.validacoes = [
@@ -12,11 +14,12 @@ exports.validacoes = [
 
 
 exports.retornoValidacoes = (req, res, next) => {
+    console.log('retornoValidacoes()')
     const errors = validationResult(req);
-    console.log(errors.array())
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+        //return res.status(400).json({ errors: errors.array() });
+        req.customErrors = errors.array();
     }
-    next();
+   next();
 };
 

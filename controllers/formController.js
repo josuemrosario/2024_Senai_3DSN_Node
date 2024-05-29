@@ -1,7 +1,7 @@
 const exemploModel = require('../models/exemploModel');
 
-exports.formView = (req,res) => {
-    
+exports.formView = (req,res,erros) => {
+    console.log('formController formView')
     // res.send(`
     //  <form action="/form" method="POST">
     //     <label>Teste: </label>
@@ -14,12 +14,40 @@ exports.formView = (req,res) => {
     res.render('formulario')
 }
 
-exports.formPost = (req,res) => {
-    console.log('funcao formPost')
-    console.log(req.body)
-    console.log(req.body.teste)
+exports.formPost = (req,res,erros) => {
+    console.log('formController formPost()')
+    
+    // console.log(req.customErrors)   
+    erros = {}
+
+     
+    preenchidos = req.body
+
+
+    //cria um objeto com todos os erros
+    req.customErrors.forEach( (linha) => {
+        //console.log(linha)
+        erros[linha.path] = linha.msg
+    })
+    console.log(erros)
+
+    
+    if(Object.keys(erros).length === 0) {
+        // logica cadastro em banco
+    } else{
+        console.log('renderizando fomulario com erros')
+        res.render('formulario',{erros:erros})
+    }
+
+
+    
+    // console.log(req.body);
+
+    // console.log(req.body)
+    // console.log(req.body.teste)
+    //console.log(erros[1])
       
-    res.send('Rota /form usando POST acessada')
+    // res.send('Rota /form usando POST acessada')
 }
 
 exports.cadastro = (req,res) =>{
