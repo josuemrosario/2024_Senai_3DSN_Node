@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <title>Formulario</title>
 </head>
 <body>
 
-    <% if(!(typeof erros ==="undefined")){ %>
+    <pre>
+        <%= preenchidos[0].id %>
+    </pre>
+    
 
-        <h1> <%= erros.cpnome  %> </h1>   
-
-    <% } %>
-
-
- 
     <div class="mb-3 mt-3 ms-3 me-3">
 
         <div class="mb-3">
@@ -23,53 +21,92 @@
         </div>
 
         <!-- inicio do formulario -->
-         <form action="/form" method="POST">
+         <form  action="/form" method="POST" novalidate>
             
             <!-- inicio do campo id -->
             <div class="input-group mb-3">
-                <label class="form-label">ID: <span id="cpid" >XXX</span></label>
+                <label class="form-label">ID: <span id="cpid" > <%= preenchidos[0].id || '' %></span></label>
             </div>
             <!-- fim do campo id -->
             
             <!-- incio campo Nome -->
             <div class="mb-3 w-50">
                 <label for="cpnome" class="form-label">Nome</label>
-                <input id="cpnome" name="cpnome" type="text" class="form-control"  aria-describedby="emailHelp" size="5" >
+                <input id="cpnome" 
+                       name="cpnome" 
+                       type="text" 
+                       class= "form-control <%= erros.hasOwnProperty('cpnome') ? 'is-invalid':''   %> "  
+                       aria-describedby="emailHelp"
+                       value="<%= preenchidos.cpnome || preenchidos[0].nome || '' %>"
+                       size="5">
+                <div class="invalid-feedback">
+                    <%= erros.hasOwnProperty('cpnome') ? erros.cpnome:''  %>                     
+                </div>
             </div>
             <!-- fim campo Nome -->
     
             <!-- inicio do campo Telefone -->
             <div class="mb-3 w-25">
                 <label for="cptelefone" class="form-label">Telefone</label>
-                <input id="cptelefone"  name="cptelefone" type="text" class="form-control"  aria-describedby="emailHelp">
+                <input id="cptelefone"  name="cptelefone" type="text" 
+                       class="form-control <%= erros.hasOwnProperty('cptelefone') ? 'is-invalid':''   %>"  
+                       aria-describedby="emailHelp"
+                       value="<%= preenchidos.cptelefone || preenchidos[0].telefone || '' %>" >
+                <div class="invalid-feedback">
+                    <%= erros.hasOwnProperty('cptelefone') ? erros.cptelefone:''  %>                     
+                </div>
             </div>
             <!-- fim do campo Telefone -->
     
             <!-- inicio do campo Endereco -->
             <div class="mb-3 w-50">
                 <label for="cpEndereco" class="form-label">Endereco</label>
-                <input id="cpEndereco" name="cpEndereco" type="text" class="form-control"  aria-describedby="emailHelp">
+                <input id="cpEndereco" name="cpEndereco" type="text" 
+                       class="form-control <%= erros.hasOwnProperty('cpEndereco') ? 'is-invalid':''   %>"  
+                       aria-describedby="emailHelp"
+                       value="<%= preenchidos.cpEndereco || preenchidos[0].endereco || '' %>" >
+                <div class="invalid-feedback">
+                    <%= erros.hasOwnProperty('cpEndereco') ? erros.cptelefone:''  %>                     
+                </div>
             </div>
             <!-- fim do campo Endereco -->
     
             <!-- inicio do campo Email -->
             <div class="mb-3 w-50">
                 <label for="cpEmail" class="form-label">Email</label>
-                <input id="cpEmail" name="cpEmail" type="text" class="form-control"  aria-describedby="emailHelp">
+                <input id="cpEmail" name="cpEmail" type="text" 
+                       class="form-control <%= erros.hasOwnProperty('cpEmail') ? 'is-invalid':''   %>"  
+                       aria-describedby="emailHelp"
+                       value="<%= preenchidos.cpEmail || preenchidos[0].email || '' %>" >
+                <div class="invalid-feedback">
+                    <%= erros.hasOwnProperty('cpEmail') ? erros.cpEmail:''  %>                     
+                </div>
             </div>
             <!-- fim do campo Email -->
     
-            <!-- inicio do campo Email -->
+            <!-- inicio do campo CPF -->
             <div class="mb-3 w-25">
                 <label for="cpCPF" class="form-label">CPF</label>
-                <input id="cpCPF" name="cpCPF" type="text" class="form-control"  aria-describedby="emailHelp">
+                <input id="cpCPF" name="cpCPF" type="text" 
+                       class="form-control <%= erros.hasOwnProperty('cpCPF') ? 'is-invalid':''   %>"  
+                       aria-describedby="emailHelp"
+                       value="<%= preenchidos.cpCPF || preenchidos[0].cpf || '' %>" >
+                <div class="invalid-feedback">
+                    <%= erros.hasOwnProperty('cpCPF') ? erros.cpCPF:''  %>                     
+                </div>
             </div>
-            <!-- fim do campo Email -->        
+            <!-- fim do campo CPF -->        
     
             <!-- inicio do campo RG -->
             <div class="mb-3 w-25">
                 <label for="cpRG" class="form-label">RG</label>
-                <input id="cpRG" name="cpRG" type="text" class="form-control"  aria-describedby="emailHelp">
+                <input id="cpRG" name="cpRG" type="text" 
+                       class="form-control <%= erros.hasOwnProperty('cpRG') ? 'is-invalid':''   %>"  
+                       aria-describedby="emailHelp"
+                       value="<%= preenchidos.cpRG || preenchidos[0].rg || '' %>" >
+                <div class="invalid-feedback">
+                    <%= erros.hasOwnProperty('cpRG') ? erros.cpRG:''  %>                     
+                </div>
             </div>
             <!-- fim do campo RG --> 
     

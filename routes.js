@@ -48,6 +48,9 @@ route.get('/comquery',(req, res) => {
     res.send(req.params);
 })
 
+route.get('/modificar/:id',formController.modificar)
+
+
 // ROTAS DA APLICAÇÃO (FIM)
 
 module.exports = route

@@ -11,33 +11,43 @@ exports.formView = (req,res,erros) => {
     // `
     // )
 
-    res.render('formulario')
+    res.render('formulario',{erros:{},preenchidos:{}})
 }
 
 exports.formPost = (req,res,erros) => {
     console.log('formController formPost()')
     
-    // console.log(req.customErrors)   
-    erros = {}
-
-     
+    // console.log(req.customErrors)      
+    erros ={}
     preenchidos = req.body
 
 
-    //cria um objeto com todos os erros
-    req.customErrors.forEach( (linha) => {
-        //console.log(linha)
-        erros[linha.path] = linha.msg
-    })
-    console.log(erros)
+    // cria um objeto com todos os erros
+    if(typeof req.customErrors !== 'undefined'){
+        req.customErrors.forEach( (linha) => {
+            //console.log(linha)
+            if (!erros.hasOwnProperty(linha.path)){
+                erros[linha.path] = linha.msg
+            }
+        })
+        console.log('Exitem erros - usuario deve corrigir')
+        console.log(erros)
+        res.render('formulario',{erros:erros,preenchidos:preenchidos})
+    }else{
+        console.log('sem erros - cadastro em banco')
+        dados = exemploModel.setPessoa(preenchidos)
+        res.redirect(200,"/cadastro");
+    }
 
     
-    if(Object.keys(erros).length === 0) {
-        // logica cadastro em banco
-    } else{
-        console.log('renderizando fomulario com erros')
-        res.render('formulario',{erros:erros})
-    }
+    // if(Object.keys(erros).length === 0) {
+    //     // logica cadastro em banco
+    //     console.log('sem erros - cadastro em banco')
+    // } else{
+    //     console.log('renderizando fomulario com erros')
+    //     console.log(erros)
+    //     res.render('formulario',{erros:erros})
+    // }
 
 
     
@@ -66,4 +76,8 @@ exports.cadastro = (req,res) =>{
     res.render('cadastro',dados)
 }
 
-
+exports.modificar = (req,res) => {
+    parametro = req.params.id
+    dados = exemploModel.getPessoa(parametro)
+    res.render('formulario',{erros:{},preenchidos:dados})
+}
