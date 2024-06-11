@@ -36,17 +36,20 @@
                     <td><%= linha.cpf %></td>
                     <td><%= linha.rg %></td>
                     <td> 
-                        <button type="button" class="btn btn-warning">Modificar</button>
-                        <button type="button" class="btn btn-danger">Deletar</button>
+                        <button id="<%= linha.id %>" onclick="location.href='/modificar/<%= linha.id %>'" type="button" class="btn btn-warning">Modificar</button>
+                        <button id="<%= linha.id %>" onclick="location.href='/deletar/<%= linha.id %>'" type="button" class="btn btn-danger">Deletar</button>
                     </td>
                 </tr>
            <%})%>            
                 
            <script>
-                btncadastrar = document.getElementById('btncadastrar')
+                window.addEventListener('load',()=>{
+                    btncadastrar = document.getElementById('btncadastrar')
 
-                btncadastrar.addEventListener('click',()=>{
-                    window.location.href = '/form'
+                    btncadastrar.addEventListener('click',()=>{
+                        window.location.href = '/form'
+                    })
+
                 })
            </script>
 
